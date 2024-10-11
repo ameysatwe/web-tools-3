@@ -22,7 +22,7 @@
         <a href="books">Books</a>
     </li>
     <li>
-        <a href="custom.jsp">Custom JSP</a>
+        <a href="customTag.jsp">Custom JSP</a>
     </li>
 
 </ul>
