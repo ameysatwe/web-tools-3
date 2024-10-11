@@ -9,6 +9,13 @@
 <%@taglib prefix="c" uri="jakarta.tags.core" %>
 <%@taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%@ taglib prefix="sql" uri="jakarta.tags.sql" %>
+<%@ taglib prefix = "x"
+           uri = "http://java.sun.com/jsp/jstl/xml" %>
+
+<%@ taglib prefix = "fn"
+           uri = "http://java.sun.com/jsp/jstl/functions" %>
+
+
 <html>
 <head>
     <title>Title</title>
@@ -73,5 +80,39 @@
 <c:forEach var="student" items="${rs.rows}">
     ${student.Student_Id} ${student.first_name}<br>
 </c:forEach>
+
+<h3>Books Info:</h3>
+
+<c:set var = "xmltext">
+    <books>
+        <book>
+            <name>Padam History</name>
+            <author>ZARA</author>
+            <price>100</price>
+        </book>
+
+        <book>
+            <name>Great Mistry</name>
+            <author>NUHA</author>
+            <price>2000</price>
+        </book>
+    </books>
+</c:set>
+
+<x:parse xml = "${xmltext}" var = "output"/>
+
+<ul class = "list">
+    <x:forEach select = "$output/books/book/name" var = "item">
+        <li>Book Name: <x:out select = "$item" /></li>
+    </x:forEach>
+</ul>
+<c:set var = "string1" value = "This is first String."/>
+<c:set var = "string2" value = "${fn:split(string1, ' ')}" />
+<c:set var = "string3" value = "${fn:join(string2, '-')}" />
+<p>Final String : ${string3}</p>
+
+<c:set var = "string1" value = "This is first String."/>
+<c:set var = "string2" value = "${fn:substringBefore(string1, 'first')}" />
+<p>Final sub string : ${string2}</p>
 </body>
 </html>
