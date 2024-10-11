@@ -12,7 +12,8 @@
 </head>
 <body>
 <h1>Add Books</h1>
-<form method="post" action="SubmitBooksServlet">
+<form method="post" action="">
+  <input type="hidden" name="action" value="add">
   <table border="1">
     <tr>
       <th>ISBN</th>

@@ -27,8 +27,8 @@ public class HandleBookLandingServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
             String action = req.getParameter("action");
             switch(action){
-                case "browse":
-                    listBooks(req,resp);
+                case "add":
+                    addBooks(req,resp);
                     break;
                 case "addBooks":
                     showNumberOfBooks(req,resp);
@@ -36,10 +36,9 @@ public class HandleBookLandingServlet extends HttpServlet {
                 case "numBooks":
                     generateBookForms(req,resp);
                     break;
-//                case"else":
-//                    addBooks()
                 default:
-                    throw new IllegalStateException("Unexpected value: " + action);
+                    listBooks(req,resp);
+                    break;
             }
     }
 
@@ -60,5 +59,24 @@ public class HandleBookLandingServlet extends HttpServlet {
         req.setAttribute("listBooks", listBooks);
         RequestDispatcher dispatcher = req.getRequestDispatcher("browseBooks.jsp");
         dispatcher.forward(req,resp);
+    }
+
+    private void addBooks(HttpServletRequest req,HttpServletResponse resp) throws IOException,ServletException{
+        int i =0;
+        while(true){
+            String isbn = req.getParameter("isbn"+i);
+            String author = req.getParameter("author"+i);
+            String title = req.getParameter("title"+i);
+            String price = req.getParameter("price"+i);
+
+            if(isbn == null || author==null || title==null || price==null)
+                break;
+
+            Float fprice = Float.parseFloat(price);
+
+            bookDao.addBook(new Book(isbn,title,author,fprice));
+            i++;
+        }
+        listBooks(req,resp);
     }
 }
