@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: ameysatwe
   Date: 11/10/24
-  Time: 4:04 pm
+  Time: 5:25 pm
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tuition Waiver Form</title>
+    <title>Books Manager</title>
     <style>
         /* Basic Styling */
         body {
@@ -34,9 +34,6 @@
             margin-top: 15px;
             font-weight: bold;
         }
-
-        input[type="text"],
-        input[type="password"],
         select,
         textarea {
             width: 100%;
@@ -45,29 +42,6 @@
             box-sizing: border-box;
             border: 1px solid #ccc;
             border-radius: 4px;
-        }
-
-        .radio-group,
-        .checkbox-group {
-            display: flex;
-            gap: 20px; /* Space between items */
-            margin-top: 5px;
-        }
-
-        .radio-group label,
-        .checkbox-group label {
-            font-weight: normal;
-            display: flex;
-            align-items: center;
-        }
-
-        .radio-group input,
-        .checkbox-group input {
-            margin-right: 5px;
-        }
-
-        input[type="file"] {
-            margin-top: 5px;
         }
 
         input[type="submit"] {
@@ -84,30 +58,19 @@
         input[type="submit"]:hover {
             background-color: #218838;
         }
-        table,
-        th,
-        td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
     </style>
 </head>
 <body>
 <div>
-    <form method="post">
-        <h2>Search Movies DB</h2>
+    <form action="handleBookLanding" method="post">
+        <h2>Books DB</h2>
 
-        <label for="name">Search query:</label>
-        <input type="text" id="name" name="keyword" required />
-
-        <label for="type">Search type:</label>
-        <select id="type" name="category" required>
-            <option value="title">Title</option>
-            <option value="director">Director</option>
-            <option value="genre">Genre</option>
+        <label for="action">Select action:</label>
+        <select id="action" name="action" required>
+            <option value="browse">Browse Books</option>
+<%--            <option value="search">Search Books</option>--%>
+            <option value="addBooks">Add Books</option>
         </select>
-
-        <input type="hidden" name="action" value="src" >
 
         <!-- Submit Button -->
         <input type="submit" value="Submit" />
@@ -115,3 +78,4 @@
 </div>
 </body>
 </html>
+

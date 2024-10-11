@@ -38,9 +38,11 @@ public class HandleMovieLandingServlet extends HttpServlet {
             case "addNewMovie":
                 showNewForm(req, resp);
                 break;
-            default:
-                System.out.println("addMovie req in post");
+            case "add":
                 addMovie(req, resp);
+                break;
+            default:
+                resp.sendError(404,"not found");
                 break;
         }
     }
@@ -56,6 +58,7 @@ public class HandleMovieLandingServlet extends HttpServlet {
         String keyword = req.getParameter("keyword");
 
         List<Movie> movies = movieDao.searchForMovies(category,keyword);
+        req.setAttribute("keyword",keyword);
         req.setAttribute("listMovies", movies);
         RequestDispatcher dispatcher = req.getRequestDispatcher("browseMovies.jsp");
         dispatcher.forward(req, resp);

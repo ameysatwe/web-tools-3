@@ -19,7 +19,7 @@
         <a href="movieLanding.jsp">Movies</a>
     </li>
     <li>
-        <a href="books/">Books</a>
+        <a href="books">Books</a>
     </li>
     <li>
         <a href="custom.jsp">Custom JSP</a>
