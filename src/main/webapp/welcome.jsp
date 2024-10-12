@@ -40,24 +40,6 @@
 </ul>
 
 
-<h2>Formatting Tag Library</h2>
-
-<!-- fmt:formatNumber to format a number -->
-<p>Formatted Number: <fmt:formatNumber value="1234567.89" type="currency" /></p>
-
-<!-- fmt:formatDate to format a date -->
-<c:set var="currentDate" value="<%= new java.util.Date() %>" scope="page"/>
-
-<!-- fmt:formatDate to format a date -->
-<p>Formatted Date: <fmt:formatDate value="${currentDate}" pattern="dd MMM yyyy" /></p>
-
-
-<!-- fmt:message for localization (example with key) -->
-<fmt:setLocale value="en_US" />
-<fmt:bundle basename="messages">
-    <p><fmt:message key="welcome.message" /></p>
-</fmt:bundle>
-
 <sql:setDataSource var="ds" driver="com.mysql.cj.jdbc.Driver"
                    url="jdbc:mysql://localhost:3306/students"
                    user="amey" password="7507"/>
